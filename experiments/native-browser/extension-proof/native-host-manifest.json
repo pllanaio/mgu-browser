@@ -1,0 +1,9 @@
+{
+  "name": "org.mgu.browser.prototype",
+  "description": "MGU original MIT native integration proof",
+  "path": "/opt/mgu-native-prototype/native_host",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://cioniecfpnfdjfkfhcijhdpjabcpbplj/"
+  ]
+}

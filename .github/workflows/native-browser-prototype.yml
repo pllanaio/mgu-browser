@@ -1,0 +1,58 @@
+name: Audit native browser prototype
+
+on:
+  push:
+    branches: ['codex/native-desktop-prototype']
+    paths:
+      - experiments/native-browser/**
+      - .github/workflows/native-browser-prototype.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-browser-prototype-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-node8-protocol:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify authored source boundary and source manifest
+        run: |
+          python3 experiments/native-browser/audit_source_only.py --self-test
+          python3 - <<'PY'
+          import json, pathlib, runpy
+          root = pathlib.Path('experiments/native-browser')
+          audit = runpy.run_path(str(root / 'audit_source_only.py'))
+          errors, actual = audit['inspect'](root)
+          expected = json.loads((root / 'source-manifest.json').read_text())['files']
+          if errors or actual != expected:
+              raise SystemExit('Prototype source manifest differs')
+          for file in root.rglob('*.py'):
+              compile(file.read_text(), str(file), 'exec')
+          print('Source manifest and Python syntax verified; no runtime payload is distributed')
+          PY
+      - name: Prepare hash-pinned official Node 8 test executable
+        id: node8
+        run: |
+          python3 - <<'PY'
+          import os, pathlib, sys
+          sys.path.insert(0, 'test')
+          import runtime_service_smoke as fixture
+          node = fixture.prepare_node(pathlib.Path(os.environ['RUNNER_TEMP']) / 'native-prototype-node8', None)
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write('binary=' + str(node) + '\n')
+          PY
+      - name: Test bounded helper client framing and lifecycle on Node 8
+        env:
+          NODE8: ${{ steps.node8.outputs.binary }}
+        run: |
+          "$NODE8" --check experiments/native-browser/native-helper/client.js
+          "$NODE8" --check experiments/native-browser/extension-proof/endpoint.js
+          "$NODE8" experiments/native-browser/native-helper/test/client.test.js

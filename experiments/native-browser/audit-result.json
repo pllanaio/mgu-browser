@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "files": 68,
+  "bytes": 852086,
+  "sourceOnly": true,
+  "checks": [
+    "allowed text/source and evidence-PNG types",
+    "no symlinks",
+    "no ELF/native addon/archive payload",
+    "no runtime/profile/private-key filenames",
+    "no private-key PEM headers",
+    "no raw cookie records in JSON evidence"
+  ],
+  "errors": [],
+  "scope": "Allowlist/marker audit plus manual evidence review; not a complete encoded-secret or legal review"
+}

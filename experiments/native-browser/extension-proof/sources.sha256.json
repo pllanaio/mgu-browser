@@ -1,0 +1,75 @@
+{
+  "scope": "Original authored sources, public extension identity manifest, sanitized evidence only",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1081,
+      "sha256": "78f204c12ec8ca526e567df9dd88744498cfb88660cddffafb2ad03ec6032db7"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8074,
+      "sha256": "d6f8c257fb016a5661f57e50f3cba3d94e6c07d9fa4e7ce082e9e764126037e9"
+    },
+    {
+      "path": "endpoint.js",
+      "bytes": 7901,
+      "sha256": "c70bd98b729b47324f6c9cc2b17baf87b926c12cede57655bbb252e90606c653"
+    },
+    {
+      "path": "evidence/native-task-manager.png",
+      "bytes": 28795,
+      "sha256": "5d46639e1dfa56f9f783925e7703820fb1407c3a3953345e4b768f4ccb7a6044"
+    },
+    {
+      "path": "evidence/result.json",
+      "bytes": 2265,
+      "sha256": "dd33f5376cbe5780fcf413866d20693aceed4a1848264ee5a9d3aa3c40c2397a"
+    },
+    {
+      "path": "extension/focus.js",
+      "bytes": 1833,
+      "sha256": "1ab295ebeee439e1d465ffa158c069968893d0bf00a889fd7bce1c751af3c07f"
+    },
+    {
+      "path": "extension/manifest.json",
+      "bytes": 1068,
+      "sha256": "05c903cd2bc9433fe567da4fbf7f0b2abb58dad9d43c28fea9aa773e34df8536"
+    },
+    {
+      "path": "extension/worker.js",
+      "bytes": 4019,
+      "sha256": "b8f2c796a2af081c13ab0b6ebb7ebb09ee9f0d2422f8500b4a4dcfe857c4f0a4"
+    },
+    {
+      "path": "extension-id",
+      "bytes": 32,
+      "sha256": "e10bf71083832d16ab8405c45292c2fb22e9e3a896a18df620ee0ff9ec0ccc7e"
+    },
+    {
+      "path": "native-host-manifest.json",
+      "bytes": 260,
+      "sha256": "48c586422b2abb847a0e97bb4e6e6884bc38fdd614369a7c2693a8a0d2adef3f"
+    },
+    {
+      "path": "native_host.c",
+      "bytes": 1544,
+      "sha256": "d4f5fab02124f1ccbf92ee0a9154e63af18c1a7a85a583475b48646c539e012d"
+    },
+    {
+      "path": "peercred.c",
+      "bytes": 1781,
+      "sha256": "ab578a5f1232ba61aa5ac29f948acb2286b04b8e17e78773633751207ca15f13"
+    },
+    {
+      "path": "protocol.md",
+      "bytes": 8301,
+      "sha256": "8b0117b70da71a85d566c34c8a8e0bab03098115dd6963c71161b0407c15ff15"
+    },
+    {
+      "path": "run.py",
+      "bytes": 20329,
+      "sha256": "dbced33d340203e4cc1814c2cf15307a5a61ef3467a9ebb549f2dd5dd4836ad0"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# This experiment branch distributes authored source and sanitized evidence only.
+.local/
+build/
+state/
+profile/
+output/
+*.deb
+*.tgz
+*.tar
+*.tar.gz
+*.tar.xz
+*.so
+*.so.*
+*.node
+*.o
+*.a
+*.pem
+*.der
+*.raw
+*.ppm
+Xauthority
+__pycache__/
+*.pyc

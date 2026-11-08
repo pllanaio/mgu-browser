@@ -1,0 +1,349 @@
+{
+  "format": 1,
+  "excludes": [
+    "source-manifest.json",
+    "audit-result.json"
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 238,
+      "sha256": "7cf90b428462a517924701e234142ff1f2c331521c0454ddd263a294b7b487f8"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1085,
+      "sha256": "7af91308e934848cdb876000bfc2f63274118bdbb3806e84d2379ab389bcb1c1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3344,
+      "sha256": "fe0d6ad50ca9eb902973f5341b18e0dec2fdae097df1c9be84235cefb8fe8723"
+    },
+    {
+      "path": "SOURCE_ONLY",
+      "bytes": 115,
+      "sha256": "9274e03dae96ff02d45a1a2be68d1c0daaec488d066c2ba5fa0f5928f9d4dde5"
+    },
+    {
+      "path": "audit_source_only.py",
+      "bytes": 4522,
+      "sha256": "44bfe584c2b1a03edd1f9f180d06bf3db63b5b9669ac2f547dddde377dc0162f"
+    },
+    {
+      "path": "docs/dependency-feasibility.md",
+      "bytes": 21789,
+      "sha256": "7ece271998257917d085bdd05fd58cee04e4028e84708b0bec71d14ecc68483d"
+    },
+    {
+      "path": "docs/production-plan.md",
+      "bytes": 11965,
+      "sha256": "f6f6cfc61fbac75a37efe8415fec54d623aff68177067cc8bd25c55dd25c8168"
+    },
+    {
+      "path": "extension-proof/LICENSE",
+      "bytes": 1081,
+      "sha256": "78f204c12ec8ca526e567df9dd88744498cfb88660cddffafb2ad03ec6032db7"
+    },
+    {
+      "path": "extension-proof/README.md",
+      "bytes": 8074,
+      "sha256": "d6f8c257fb016a5661f57e50f3cba3d94e6c07d9fa4e7ce082e9e764126037e9"
+    },
+    {
+      "path": "extension-proof/endpoint.js",
+      "bytes": 7901,
+      "sha256": "c70bd98b729b47324f6c9cc2b17baf87b926c12cede57655bbb252e90606c653"
+    },
+    {
+      "path": "extension-proof/evidence/native-task-manager.png",
+      "bytes": 28795,
+      "sha256": "5d46639e1dfa56f9f783925e7703820fb1407c3a3953345e4b768f4ccb7a6044"
+    },
+    {
+      "path": "extension-proof/evidence/result.json",
+      "bytes": 2265,
+      "sha256": "dd33f5376cbe5780fcf413866d20693aceed4a1848264ee5a9d3aa3c40c2397a"
+    },
+    {
+      "path": "extension-proof/extension/focus.js",
+      "bytes": 1833,
+      "sha256": "1ab295ebeee439e1d465ffa158c069968893d0bf00a889fd7bce1c751af3c07f"
+    },
+    {
+      "path": "extension-proof/extension/manifest.json",
+      "bytes": 1068,
+      "sha256": "05c903cd2bc9433fe567da4fbf7f0b2abb58dad9d43c28fea9aa773e34df8536"
+    },
+    {
+      "path": "extension-proof/extension/worker.js",
+      "bytes": 4019,
+      "sha256": "b8f2c796a2af081c13ab0b6ebb7ebb09ee9f0d2422f8500b4a4dcfe857c4f0a4"
+    },
+    {
+      "path": "extension-proof/extension-id",
+      "bytes": 32,
+      "sha256": "e10bf71083832d16ab8405c45292c2fb22e9e3a896a18df620ee0ff9ec0ccc7e"
+    },
+    {
+      "path": "extension-proof/native-host-manifest.json",
+      "bytes": 260,
+      "sha256": "48c586422b2abb847a0e97bb4e6e6884bc38fdd614369a7c2693a8a0d2adef3f"
+    },
+    {
+      "path": "extension-proof/native_host.c",
+      "bytes": 1544,
+      "sha256": "d4f5fab02124f1ccbf92ee0a9154e63af18c1a7a85a583475b48646c539e012d"
+    },
+    {
+      "path": "extension-proof/peercred.c",
+      "bytes": 1781,
+      "sha256": "ab578a5f1232ba61aa5ac29f948acb2286b04b8e17e78773633751207ca15f13"
+    },
+    {
+      "path": "extension-proof/protocol.md",
+      "bytes": 8301,
+      "sha256": "8b0117b70da71a85d566c34c8a8e0bab03098115dd6963c71161b0407c15ff15"
+    },
+    {
+      "path": "extension-proof/run.py",
+      "bytes": 20329,
+      "sha256": "dbced33d340203e4cc1814c2cf15307a5a61ef3467a9ebb549f2dd5dd4836ad0"
+    },
+    {
+      "path": "extension-proof/sources.sha256.json",
+      "bytes": 2226,
+      "sha256": "3f5b7a9d53a0d1615763eeec0b4b62a26fddc2b0bc8d91281e8fb36281ecff4e"
+    },
+    {
+      "path": "inputs/bookworm-devel-manifest.json",
+      "bytes": 4646,
+      "sha256": "abf3aa385a6ae6096b584f0466c62278650e641e782c787b2da4349d820162fa"
+    },
+    {
+      "path": "inputs/bookworm-extra-manifest.json",
+      "bytes": 4953,
+      "sha256": "9923e01331a2df5210e3fa5de03a165c688f1a39cb118cfdee410354528c2b6c"
+    },
+    {
+      "path": "inputs/bookworm-locale-manifest.json",
+      "bytes": 3121,
+      "sha256": "fb67f1fd49da650d60aeaca59ea3dfdc3b9cd7ef074c9c6c277cc49d38b2db19"
+    },
+    {
+      "path": "inputs/bookworm-manifest.json",
+      "bytes": 308742,
+      "sha256": "ae6bd71ab3c42c2b9b373a9c630edb59a4ad261d24f97479b769147aaf85fa37"
+    },
+    {
+      "path": "inputs/external-inputs.json",
+      "bytes": 2217,
+      "sha256": "59038b5c1bfc129f0585e7b3f6163f0967932d75a5a75c7536d22309b141f035"
+    },
+    {
+      "path": "inputs/old-audio-abi-manifest.json",
+      "bytes": 1441,
+      "sha256": "23e992d1dfd3f4ecbb7b540f3b6b6f2f0e0d5660ca889c4d3d616040f8528c27"
+    },
+    {
+      "path": "native-gui-proof/README.md",
+      "bytes": 8595,
+      "sha256": "07be0a3e893eaab1ba674c20740d70602207e51ef8bec7414eae85a825611fe6"
+    },
+    {
+      "path": "native-gui-proof/evidence/authored-helper-build.json",
+      "bytes": 655,
+      "sha256": "96dd68822467e8bdd3d929751a2473ae41a8a7d6edd185589678618f7e0b735c"
+    },
+    {
+      "path": "native-gui-proof/evidence/combined-result.json",
+      "bytes": 6190,
+      "sha256": "4258595b841188ee24b6f46d3ff085bc0f6db4ff44e16da9a7f16566961ccdf7"
+    },
+    {
+      "path": "native-gui-proof/evidence/native-confirm.png",
+      "bytes": 41326,
+      "sha256": "8b1505c6ffd56b56de0e956197a7038b6e17104415ada65037b23dc24c8ad386"
+    },
+    {
+      "path": "native-gui-proof/evidence/native-file-location-400.png",
+      "bytes": 38538,
+      "sha256": "b62af58db505bcfb8a8bcf1f09ff65e0ab6ff958d2ce9e5bc23010118a69240b"
+    },
+    {
+      "path": "native-gui-proof/evidence/native-sandbox.png",
+      "bytes": 36854,
+      "sha256": "577c19cfca981e66bdb569290b4e25c1f59713b5625aac886f75b129e3c7008f"
+    },
+    {
+      "path": "native-gui-proof/evidence/native-video-fullscreen.png",
+      "bytes": 78535,
+      "sha256": "32b1b47ac308d158c4c5e75c71dce75fa30a496794040bf71f887ce71e235a8e"
+    },
+    {
+      "path": "native-gui-proof/evidence/results-exact-400-webgl-only-60fps.json",
+      "bytes": 7466,
+      "sha256": "121e2a88b8fa86ce7c5c546f4124af4ed6c3519d69f38f6d0ac626ca13ad5813"
+    },
+    {
+      "path": "native-gui-proof/evidence/results-exact-400-webgl-only-cached.json",
+      "bytes": 7466,
+      "sha256": "d750c41c6b91c0d2b9b3a21fcbd20c2d774fe742b0b5d69aea51c38dd043b2f4"
+    },
+    {
+      "path": "native-gui-proof/evidence/results-host-baseline.json",
+      "bytes": 4033,
+      "sha256": "e7738bb8e7059a6b70c88229edf3f90636a4e52df22caa05ebb34beca74177b2"
+    },
+    {
+      "path": "native-gui-proof/evidence/ubuntu18-runtime-result.json",
+      "bytes": 3535,
+      "sha256": "cd3fd53903768049bcb38de3658462e47bdc7094807f027ccc44f305f613af4f"
+    },
+    {
+      "path": "native-gui-proof/scripts/bookworm_stack_smoke.py",
+      "bytes": 4768,
+      "sha256": "1e12fe14984e799d019375404b841c1176a1361f98814d6df4891bceb640afbf"
+    },
+    {
+      "path": "native-gui-proof/scripts/build_test_helpers.py",
+      "bytes": 2549,
+      "sha256": "b1671bf71d05e0920cd0557a09285c4435d208bd48282d2f00f557bdba3b49b4"
+    },
+    {
+      "path": "native-gui-proof/scripts/combined_native_smoke.py",
+      "bytes": 18692,
+      "sha256": "a98fe0b22810e24d243180d2a0ae0f4e6105f14bcac0a7af027d5784c1b47bb3"
+    },
+    {
+      "path": "native-gui-proof/scripts/combined_x_control.c",
+      "bytes": 4420,
+      "sha256": "e5193f96e4538a1bd16a55c060696ec4830c878e3d9a19a8680e7fa14d49fdbb"
+    },
+    {
+      "path": "native-gui-proof/scripts/fetch_bookworm.py",
+      "bytes": 6972,
+      "sha256": "3f888e2d185a1affe271476faa9dbeeafba2ea0b5c3461aee2305730b8284626"
+    },
+    {
+      "path": "native-gui-proof/scripts/fetch_bookworm_extra.py",
+      "bytes": 4341,
+      "sha256": "d24aa450f7d6c18f05f858802b777cedc0a776417ab99dab1d9b0964ffa62961"
+    },
+    {
+      "path": "native-gui-proof/scripts/fetch_pinned_debs.py",
+      "bytes": 4768,
+      "sha256": "de679e99cb0d7046ccef4a6931a5968e4725ac00fcf92283ddc440368eb23d5e"
+    },
+    {
+      "path": "native-gui-proof/scripts/finalize_runtime_env.py",
+      "bytes": 1069,
+      "sha256": "f23392f818ceb3bb2de144a0ba067a871c8279bab4415c43c5c0054ceb1a0224"
+    },
+    {
+      "path": "native-gui-proof/scripts/generate_clip.py",
+      "bytes": 1102,
+      "sha256": "704ff683e5060877c4f5ac530fcef957b96c78462b212929ed885b743fe1d5c7"
+    },
+    {
+      "path": "native-gui-proof/scripts/local-http-relay.pl",
+      "bytes": 965,
+      "sha256": "967b0f606cbd97e3961b80000c1bcd64b26496d1e5830e6492976c46d3151f34"
+    },
+    {
+      "path": "native-gui-proof/scripts/native_x_probe.c",
+      "bytes": 5400,
+      "sha256": "d4f0183eca07954759f835c7af9690ba9d4b193c0c232329f37d061bcf21ba01"
+    },
+    {
+      "path": "native-gui-proof/scripts/prepare_bookworm.py",
+      "bytes": 4434,
+      "sha256": "f9170cd488ef2b7a7ead841d82a1328b8650fb1832728e240d0d9c0f46ce8694"
+    },
+    {
+      "path": "native-gui-proof/scripts/prepare_bookworm_assets.py",
+      "bytes": 2204,
+      "sha256": "f06a3779a58e47256353a7733ebe09697cb554b8a31afc70c94df07b8330f871"
+    },
+    {
+      "path": "native-gui-proof/scripts/prepare_bookworm_extra.py",
+      "bytes": 2741,
+      "sha256": "991976b4632714fb283112a6db8a72ccb6598e4088bc54b5ffaec36dcaadc46c"
+    },
+    {
+      "path": "native-gui-proof/scripts/prepare_extra_pinned.py",
+      "bytes": 1856,
+      "sha256": "9d621b2533fd8200f9313523bdff4b7305ac05ec525bd7fdf06a73dab35aa191"
+    },
+    {
+      "path": "native-gui-proof/scripts/ubuntu18_runtime_probe.py",
+      "bytes": 9050,
+      "sha256": "2d2445aeaf85e420f875700cc85d1b32967d20c2356fa38d10b8ea59f6d6369c"
+    },
+    {
+      "path": "native-gui-proof/scripts/xkb_private_path.c",
+      "bytes": 323,
+      "sha256": "53a38f5b02f23fcf44fb62507e999fe87a38fa64a78069c16399d2f94612d9f5"
+    },
+    {
+      "path": "native-helper/LICENSE",
+      "bytes": 1095,
+      "sha256": "582005e8048bfe2f5cabc9c797e1fa10d3c20f9d9c2816248801402db340d655"
+    },
+    {
+      "path": "native-helper/PROTOCOL.md",
+      "bytes": 6853,
+      "sha256": "3d1725973101852431ecb46a016606892acc9c2156270ab3d006cd2c094cc6fb"
+    },
+    {
+      "path": "native-helper/README-node.md",
+      "bytes": 5773,
+      "sha256": "722882958ddf894d59a4a6e14721a6d72721b783a6cb5b43b78b05ea5ed430b8"
+    },
+    {
+      "path": "native-helper/README.md",
+      "bytes": 5727,
+      "sha256": "958f198b5f90cf29aeb82f5a910e07e488ddf1a9037e51bed2793495d6bd6c72"
+    },
+    {
+      "path": "native-helper/build.py",
+      "bytes": 1112,
+      "sha256": "fc6209758a94dee91b31f952bcf8c97639f873fcabb583f59721f7631fd53ad7"
+    },
+    {
+      "path": "native-helper/client.js",
+      "bytes": 18512,
+      "sha256": "db3c68f7a8be95cb90c5464331df4c02a3c76f14fefe02b9b323550e2e5afd8d"
+    },
+    {
+      "path": "native-helper/src/native_helper.c",
+      "bytes": 15910,
+      "sha256": "e895de54fa72c093f6be48815c5baf090979a6a2c9c4d3248dcfd61346893a73"
+    },
+    {
+      "path": "native-helper/test/client.test.js",
+      "bytes": 9756,
+      "sha256": "adf6cb42b6acdcc13a4515dfc5c4e297cfbed6c730cc4e1bf5587d05d90593ce"
+    },
+    {
+      "path": "native-helper/test/native_runtime.test.js",
+      "bytes": 10900,
+      "sha256": "b96b29251e859bdcde69641003da3c47b58674071b9fd285f6762a377e9b90bc"
+    },
+    {
+      "path": "native-helper/test/run_ubuntu18.py",
+      "bytes": 4493,
+      "sha256": "d2a701231e89a72889a65afa3459cacf52f0904e0ed8d5c871efac8ec811a7cf"
+    },
+    {
+      "path": "native-helper/test/x_fixture.c",
+      "bytes": 2223,
+      "sha256": "20b70d4fc94ea56f0286a384b3ef4f5617a39ba2ece6db25cc76aeb9b441c88e"
+    },
+    {
+      "path": "native-helper/test-result.json",
+      "bytes": 3198,
+      "sha256": "3d75d5c45ecbbcc3e2071a0ce0f97ead7c29d6fdc79ea8e53a0dcbe42e309bec"
+    }
+  ]
+}

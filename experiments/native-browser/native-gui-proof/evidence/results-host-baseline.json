@@ -1,0 +1,190 @@
+{
+  "environment": {
+    "kernel": "6.18.57",
+    "machine": "x86_64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "display": ":119",
+    "xAuthMode": "0o600",
+    "tcpDisabled": true,
+    "nativeNoHeadlessNoCdp": true
+  },
+  "facts": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "platform": "Linux x86_64",
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1279,
+    "outerHeight": 719,
+    "innerWidth": 1269,
+    "innerHeight": 566,
+    "dpr": 1,
+    "graphics": {
+      "available": false
+    },
+    "video": {
+      "time": 0,
+      "paused": true,
+      "decoded": 0,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 23,
+        "y": 23,
+        "w": 234.640625,
+        "h": 45
+      },
+      "dialog": {
+        "x": 277.640625,
+        "y": 23,
+        "w": 139.03125,
+        "h": 45
+      },
+      "permission": {
+        "x": 436.671875,
+        "y": 23,
+        "w": 209.109375,
+        "h": 45
+      },
+      "link": {
+        "x": 660.78125,
+        "y": 35,
+        "w": 196.09375,
+        "h": 21
+      },
+      "first": {
+        "x": 23,
+        "y": 136,
+        "w": 256,
+        "h": 45
+      },
+      "second": {
+        "x": 299,
+        "y": 136,
+        "w": 256,
+        "h": 45
+      },
+      "file": {
+        "x": 575,
+        "y": 135,
+        "w": 361,
+        "h": 47
+      }
+    }
+  },
+  "benchmarks": [
+    {
+      "width": 1280,
+      "height": 720,
+      "seconds": 6.000139574000059,
+      "fps": 29.99930214623341,
+      "captureFrames": 180,
+      "changedFrames": 170,
+      "captureConvertCrcMsMedian": 4.796161000285792,
+      "captureConvertCrcMsP95": 12.787509999725444,
+      "captureProcessCpuPercent": 15.825160303179151,
+      "nativeProcessesCpuPercent": 13.83301154520763,
+      "nativeRssMiB": 775.2734375,
+      "nativePssMiB": 309.92578125,
+      "processes": 19,
+      "video": {
+        "time": 6.442887,
+        "paused": false,
+        "decoded": 198,
+        "dropped": 0
+      }
+    },
+    {
+      "width": 1280,
+      "height": 400,
+      "seconds": 6.000107652999759,
+      "fps": 29.99946174465867,
+      "captureFrames": 180,
+      "changedFrames": 178,
+      "captureConvertCrcMsMedian": 2.3506454995185777,
+      "captureConvertCrcMsP95": 2.787532000184001,
+      "captureProcessCpuPercent": 6.603528801719248,
+      "nativeProcessesCpuPercent": 12.999766756018758,
+      "nativeRssMiB": 803.01953125,
+      "nativePssMiB": 328.5234375,
+      "processes": 20,
+      "video": {
+        "time": 0.357517,
+        "paused": false,
+        "decoded": 495,
+        "dropped": 0
+      }
+    }
+  ],
+  "xErrors": 0,
+  "finalFacts": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "platform": "Linux x86_64",
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1279,
+    "outerHeight": 719,
+    "innerWidth": 1269,
+    "innerHeight": 566,
+    "dpr": 1,
+    "graphics": {
+      "available": false
+    },
+    "video": {
+      "time": 1.357423,
+      "paused": false,
+      "decoded": 525,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 23,
+        "y": 23,
+        "w": 234.640625,
+        "h": 45
+      },
+      "dialog": {
+        "x": 277.640625,
+        "y": 23,
+        "w": 139.03125,
+        "h": 45
+      },
+      "permission": {
+        "x": 436.671875,
+        "y": 23,
+        "w": 209.109375,
+        "h": 45
+      },
+      "link": {
+        "x": 660.78125,
+        "y": 35,
+        "w": 196.09375,
+        "h": 21
+      },
+      "first": {
+        "x": 23,
+        "y": 136,
+        "w": 256,
+        "h": 45
+      },
+      "second": {
+        "x": 299,
+        "y": 136,
+        "w": 256,
+        "h": 45
+      },
+      "file": {
+        "x": 575,
+        "y": 135,
+        "w": 361,
+        "h": 47
+      }
+    }
+  },
+  "uiProofs": {
+    "confirmAccepted": true,
+    "nativeSecondTabRequested": true
+  }
+}

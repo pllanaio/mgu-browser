@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "MGU Native Integration Prototype",
+  "version": "0.0.1",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzwZ4iI/X3f2/G1bVCNsaIer5PEYGECiX+ntLt33hyZzSydfud9AwfBOu4KZWvByHlYyNN0go/Uv34jfD335w21OHcvMDOilZs/sTtYLOQ5Ibm7qXjvSBRmlVoc7wSJkckyPGATYBSRZzOfVY5lQd0lhx1A67tKu9xLkOxmCsZqB9557GfevfAYC3Lr7qpsZ0Y+ecDPMeNJPE8JuIMhgoz4sy0sjljNpG+5k1xegvKXjzghX+VvSUPHMG97zvy6f7F19d4vvdypZiJWmjwRBY+vCjPpRdJahMIb6BrXX+09KOons8joX4Dl23kEvu9HBKdkhGCWV3eXul+WUDxvlg2wIDAQAB",
+  "description": "Original MIT-licensed local prototype; browser status only.",
+  "permissions": [
+    "tabs",
+    "cookies",
+    "downloads",
+    "nativeMessaging",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "focus.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_start",
+      "match_about_blank": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}

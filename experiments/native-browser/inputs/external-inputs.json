@@ -1,0 +1,39 @@
+{
+  "format": 1,
+  "purpose": "External inputs for the authored native-window/extension proof; no binary input is distributed in this bundle",
+  "containerImage": "ubuntu@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98",
+  "engine": {
+    "component": "mgu-browser-engine",
+    "version": "0.1.0",
+    "archiveUrl": "https://github.com/pllanaio/mgu-browser/releases/download/v0.10.0/mgu-browser-engine%400.1.0.tgz",
+    "archiveSha256": "0b6a73c964354214262d01f2d9bec2d0ab253cac8d27de04708912e804ef0874",
+    "chromiumSha256": "9c94b57491fcc1a4b5a013ecb8fa13a637cc9a16aebea5041899c3cb033e5a13",
+    "mountPrefix": "/var/opt/mgu-browser-engine/versions/0.1.0/engine",
+    "instruction": "Supply the already-published immutable Engine0.1 archive; verify hash and extract only regular files to a separate scratch workspace. The URL is the original component publication; do not substitute a newer host Chromium.",
+    "archiveBytes": 181048639
+  },
+  "audioHelper": {
+    "component": "mgu-browser",
+    "version": "0.15.0",
+    "archiveUrl": "https://github.com/pllanaio/mgu-browser/releases/download/v0.15.0/mgu-browser%400.15.0.tgz",
+    "payloadPath": "files/audio-bridge",
+    "helperSha256": "0b69b843353f976bc9a5ff01f8abc207baa74dfa9a6d56b163f0e506fba737e6",
+    "instruction": "Use the exact published helper; ALSA fixture output is not a physical vehicle route."
+  },
+  "node8": {
+    "version": "8.16.2",
+    "archiveUrl": "https://nodejs.org/dist/v8.16.2/node-v8.16.2-linux-x64.tar.xz",
+    "archiveSha256": "88617a293f5828cc94ee99c94a43fbea12b989e34fe643fc14885a14748a8da6",
+    "archiveBytes": 11334816
+  },
+  "guiInputs": [
+    "bookworm-manifest.json",
+    "bookworm-extra-manifest.json",
+    "bookworm-locale-manifest.json"
+  ],
+  "notes": [
+    "Public manifests contain source archive URLs, SHA256 and binary package identities. Corresponding source publication and final notices are not completed by this source-only review bundle.",
+    "The historical proof uses fixed /tmp private-runtime prefixes; README documents every required external path. New helper build.py accepts explicit sysroot/loader/output paths."
+  ],
+  "buildHeaderInputs": "bookworm-devel-manifest.json"
+}

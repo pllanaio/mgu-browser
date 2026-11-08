@@ -1,0 +1,70 @@
+{
+  "success": true,
+  "scope": "Authored source-only native capture/input helper prototype; no production browser mode",
+  "wrapper": {
+    "success": true,
+    "node": "v8.16.2",
+    "passed": [
+      "explicit options and input validation",
+      "fragmented ACK and frame with stable owned pixels",
+      "single frame credit and independent timely input",
+      "coalesced responses retain individual request identities",
+      "epoch cancellation discards an old partial frame",
+      "oversized frame fails without allocating payload",
+      "EOF rejects a truncated native frame",
+      "unexpected frame-pipe EOF closes the owned helper",
+      "pending requests bounded and command timeout kills helper",
+      "stop cancels partial frame and has a bounded kill fallback"
+    ]
+  },
+  "nativeRuntime": {
+    "success": true,
+    "nodeVersion": "v8.16.2",
+    "cases": [
+      "fragmented command",
+      "coalesced validation rejects invalid input",
+      "blocked frame preserves ACK/native input and one credit",
+      "immutable partial old frame plus fresh generation RGBA",
+      "text explicitly unsupported",
+      "native click/double/wheel/drag/key-up with real server events",
+      "STOP releases held input and SHM",
+      "EOF while frame blocked releases input/SHM",
+      "SIGTERM while frame blocked releases input/SHM",
+      "OVERSIZE while frame blocked releases input/SHM",
+      "TRUNCATED while frame blocked releases input/SHM",
+      "actual Node8 client/C helper framing and capture"
+    ],
+    "maxRssKiB": 7016,
+    "blockedFrameKeyAckMs": 6,
+    "environment": {
+      "base": "Ubuntu18/glibc2.27",
+      "privateHelperRuntime": "Supplied X11/GLIBC2.36 sysroot",
+      "node8ProcessUsesBaseLibc": true,
+      "containerImage": "ubuntu@sha256:152dc042452c496007f07ca9127571cb9c29697f42acbfad72324b2bb2e43c98",
+      "privateIPC": true,
+      "network": "none",
+      "extraCapabilities": []
+    }
+  },
+  "limits": {
+    "maxRgbaBytes": 4194240,
+    "onePendingImmutableFrame": true,
+    "maxQueuedResponses": 128,
+    "maxClientRequests": 32,
+    "unicodeClipboard": "explicitly unsupported"
+  },
+  "observationsAreDeviceGuarantees": false,
+  "sourceSha256": {
+    "LICENSE": "582005e8048bfe2f5cabc9c797e1fa10d3c20f9d9c2816248801402db340d655",
+    "PROTOCOL.md": "3d1725973101852431ecb46a016606892acc9c2156270ab3d006cd2c094cc6fb",
+    "README-node.md": "722882958ddf894d59a4a6e14721a6d72721b783a6cb5b43b78b05ea5ed430b8",
+    "README.md": "958f198b5f90cf29aeb82f5a910e07e488ddf1a9037e51bed2793495d6bd6c72",
+    "build.py": "fc6209758a94dee91b31f952bcf8c97639f873fcabb583f59721f7631fd53ad7",
+    "client.js": "db3c68f7a8be95cb90c5464331df4c02a3c76f14fefe02b9b323550e2e5afd8d",
+    "src/native_helper.c": "e895de54fa72c093f6be48815c5baf090979a6a2c9c4d3248dcfd61346893a73",
+    "test/client.test.js": "adf6cb42b6acdcc13a4515dfc5c4e297cfbed6c730cc4e1bf5587d05d90593ce",
+    "test/native_runtime.test.js": "b96b29251e859bdcde69641003da3c47b58674071b9fd285f6762a377e9b90bc",
+    "test/run_ubuntu18.py": "d2a701231e89a72889a65afa3459cacf52f0904e0ed8d5c871efac8ec811a7cf",
+    "test/x_fixture.c": "20b70d4fc94ea56f0286a384b3ef4f5617a39ba2ece6db25cc76aeb9b441c88e"
+  }
+}

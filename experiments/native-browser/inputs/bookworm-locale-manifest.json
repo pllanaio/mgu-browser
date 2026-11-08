@@ -1,0 +1,89 @@
+{
+  "Package": "libc-bin",
+  "Version": "2.36-9+deb12u14",
+  "SHA256": "e667401af91fad95f15b3ebd25d1abd8373fd18b00dc32219678413170544e84",
+  "Size": "609144",
+  "_url": "https://deb.debian.org/debian/pool/main/g/glibc/libc-bin_2.36-9+deb12u14_amd64.deb",
+  "source": "glibc",
+  "sourceVersion": "2.36-9+deb12u14",
+  "sourceArchives": [
+    {
+      "url": "https://deb.debian.org/debian/pool/main/g/glibc/glibc_2.36-9+deb12u14.dsc",
+      "sha256": "cfe1f0b8dc1fa211ce5a45b3725cc38b29f88667f1140ebdca6de35cf9c6f1fd",
+      "bytes": 9765
+    },
+    {
+      "url": "https://deb.debian.org/debian/pool/main/g/glibc/glibc_2.36.orig.tar.xz",
+      "sha256": "a543c02070d46ccaf866957efd13f10c924daa74c86a90a0254db09a92a708ee",
+      "bytes": 19363988
+    },
+    {
+      "url": "https://deb.debian.org/debian/pool/main/g/glibc/glibc_2.36-9+deb12u14.debian.tar.xz",
+      "sha256": "cf4ac9cd98185452cae3ef34e2e4ee12753e3d93fd0c62c61396d4a47eec902f",
+      "bytes": 918488
+    }
+  ],
+  "usage": "Only compiled C.utf8 locale DATA used; extracted libc-bin executables are not used or qualified.",
+  "localeFiles": [
+    {
+      "path": "usr/lib/locale/C.utf8/LC_MEASUREMENT",
+      "sha256": "bb14a6f2cbd5092a755e8f272079822d3e842620dd4542a8dfa1e5e72fc6115b",
+      "bytes": 23
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_IDENTIFICATION",
+      "sha256": "38a1d8e5271c86f48910d9c684f64271955335736e71cec35eeac942f90eb091",
+      "bytes": 258
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_TELEPHONE",
+      "sha256": "f4caf0d12844219b65ba42edc7ec2f5ac1b2fc36a3c88c28887457275daca1ee",
+      "bytes": 47
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_PAPER",
+      "sha256": "cde048b81e2a026517cc707c906aebbd50f5ee3957b6f0c1c04699dffcb7c015",
+      "bytes": 34
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_ADDRESS",
+      "sha256": "26e2800affab801cb36d4ff9625a95c3abceeda2b6553a7aecd0cfcf34c98099",
+      "bytes": 127
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_CTYPE",
+      "sha256": "e4b5576b19e40be5923b0eb864750d35944404bb0a92aa68d1a9b96110c52120",
+      "bytes": 353616
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_NUMERIC",
+      "sha256": "f5976e6b3e6b24dfe03caad6a5b98d894d8110d8bd15507e690fd60fd3e04ab2",
+      "bytes": 50
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_COLLATE",
+      "sha256": "47a5f5359a8f324abc39d69a7f6241a2ac0e2fbbeae5b9c3a756e682b75d087b",
+      "bytes": 1406
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_NAME",
+      "sha256": "14507aad9f806112e464b9ca94c93b2e4d759ddc612b5f87922d7cac7170697d",
+      "bytes": 62
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_MONETARY",
+      "sha256": "bfd9e9975443b834582493fe9a8d7aefcd989376789c17470a1e548aee76fd55",
+      "bytes": 270
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_TIME",
+      "sha256": "0910b595d1d5d4e52cc0f415bbb1ff07c015d6860d34aae02505dd9973a63154",
+      "bytes": 3360
+    },
+    {
+      "path": "usr/lib/locale/C.utf8/LC_MESSAGES/SYS_LC_MESSAGES",
+      "sha256": "f9ad02f1d8eba721d4cbd50c365b5c681c39aec008f90bfc2be2dc80bfbaddcb",
+      "bytes": 48
+    }
+  ]
+}

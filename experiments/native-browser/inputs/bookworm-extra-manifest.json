@@ -1,0 +1,114 @@
+{
+  "seeds": [
+    "librsvg2-common",
+    "at-spi2-core"
+  ],
+  "packages": [
+    {
+      "name": "at-spi2-core",
+      "version": "2.46.0-5",
+      "url": "https://deb.debian.org/debian/pool/main/a/at-spi2-core/at-spi2-core_2.46.0-5_amd64.deb",
+      "sha256": "42c3567bef2bd3e868a072acbdef1c3b0416b2a127a2e0fa2cbc600cedcd2a9a",
+      "bytes": 57324,
+      "source": "at-spi2-core",
+      "sourceVersion": "2.46.0-5",
+      "sourceArchives": [
+        {
+          "url": "https://deb.debian.org/debian/pool/main/a/at-spi2-core/at-spi2-core_2.46.0-5.dsc",
+          "sha256": "20eb07c845705c27c2ebd0075460ae165e01256a584d7bc623d519c40ee5ebb8",
+          "bytes": 3639
+        },
+        {
+          "url": "https://deb.debian.org/debian/pool/main/a/at-spi2-core/at-spi2-core_2.46.0.orig.tar.xz",
+          "sha256": "aa0c86c79f7a8d67bae49a5b7a5ab08430c608cffe6e33bf47a72f41ab03c3d0",
+          "bytes": 540600
+        },
+        {
+          "url": "https://deb.debian.org/debian/pool/main/a/at-spi2-core/at-spi2-core_2.46.0-5.debian.tar.xz",
+          "sha256": "7a92050f01349c6dda1ff15f2141959bd618a776b6d43e956f7a51b5a7fd7cb3",
+          "bytes": 18996
+        }
+      ]
+    },
+    {
+      "name": "gsettings-desktop-schemas",
+      "version": "43.0-1",
+      "url": "https://deb.debian.org/debian/pool/main/g/gsettings-desktop-schemas/gsettings-desktop-schemas_43.0-1_all.deb",
+      "sha256": "15cc7142c3ddea0551b834c53c4d3b5cd8f5485e695100966877f2be50def7af",
+      "bytes": 642864,
+      "source": "gsettings-desktop-schemas",
+      "sourceVersion": "43.0-1",
+      "sourceArchives": [
+        {
+          "url": "https://deb.debian.org/debian/pool/main/g/gsettings-desktop-schemas/gsettings-desktop-schemas_43.0-1.dsc",
+          "sha256": "b6d9acdf6d9ecdb56734ee9bd91e3391f7ff86a4baa35f28de1e9c0ed5f2b958",
+          "bytes": 2485
+        },
+        {
+          "url": "https://deb.debian.org/debian/pool/main/g/gsettings-desktop-schemas/gsettings-desktop-schemas_43.0.orig.tar.xz",
+          "sha256": "5d5568282ab38b95759d425401f7476e56f8cbf2629885587439f43bd0b84bbe",
+          "bytes": 736456
+        },
+        {
+          "url": "https://deb.debian.org/debian/pool/main/g/gsettings-desktop-schemas/gsettings-desktop-schemas_43.0-1.debian.tar.xz",
+          "sha256": "0c64eaeb09e5c70aa8beab1d098fac827abbb7f153dcbd86a7cf288e152a5ac4",
+          "bytes": 7052
+        }
+      ]
+    },
+    {
+      "name": "librsvg2-2",
+      "version": "2.54.7+dfsg-1~deb12u1",
+      "url": "https://deb.debian.org/debian/pool/main/libr/librsvg/librsvg2-2_2.54.7+dfsg-1~deb12u1_amd64.deb",
+      "sha256": "090f2ffbedb57727ee9b264e6ea6e66fe09773629739dd406931264b1bf14dc8",
+      "bytes": 2620240,
+      "source": "librsvg",
+      "sourceVersion": "2.54.7+dfsg-1~deb12u1",
+      "sourceArchives": [
+        {
+          "url": "https://deb.debian.org/debian-security/pool/updates/main/libr/librsvg/librsvg_2.54.7+dfsg-1~deb12u1.dsc",
+          "sha256": "87925d4b6f5f1a8b5fc8e069d69322d4ac70694408490091c05737b97ba938ca",
+          "bytes": 2997
+        },
+        {
+          "url": "https://deb.debian.org/debian-security/pool/updates/main/libr/librsvg/librsvg_2.54.7+dfsg.orig.tar.xz",
+          "sha256": "799f93b73ed24c03efda1c707d8c40630fdee18c7e7532dda4ad1ce9671e98c2",
+          "bytes": 14342756
+        },
+        {
+          "url": "https://deb.debian.org/debian-security/pool/updates/main/libr/librsvg/librsvg_2.54.7+dfsg-1~deb12u1.debian.tar.xz",
+          "sha256": "ce0db15bd6a2633fbfcfacce894a81ad5c0056628ad176f00ddaa648d462e5fb",
+          "bytes": 35052
+        }
+      ]
+    },
+    {
+      "name": "librsvg2-common",
+      "version": "2.54.7+dfsg-1~deb12u1",
+      "url": "https://deb.debian.org/debian/pool/main/libr/librsvg/librsvg2-common_2.54.7+dfsg-1~deb12u1_amd64.deb",
+      "sha256": "2e84a584acc49ee426c40737fff89a0585619328dfec4a8c5e216bc1c9599915",
+      "bytes": 21384,
+      "source": "librsvg",
+      "sourceVersion": "2.54.7+dfsg-1~deb12u1",
+      "sourceArchives": [
+        {
+          "url": "https://deb.debian.org/debian-security/pool/updates/main/libr/librsvg/librsvg_2.54.7+dfsg-1~deb12u1.dsc",
+          "sha256": "87925d4b6f5f1a8b5fc8e069d69322d4ac70694408490091c05737b97ba938ca",
+          "bytes": 2997
+        },
+        {
+          "url": "https://deb.debian.org/debian-security/pool/updates/main/libr/librsvg/librsvg_2.54.7+dfsg.orig.tar.xz",
+          "sha256": "799f93b73ed24c03efda1c707d8c40630fdee18c7e7532dda4ad1ce9671e98c2",
+          "bytes": 14342756
+        },
+        {
+          "url": "https://deb.debian.org/debian-security/pool/updates/main/libr/librsvg/librsvg_2.54.7+dfsg-1~deb12u1.debian.tar.xz",
+          "sha256": "ce0db15bd6a2633fbfcfacce894a81ad5c0056628ad176f00ddaa648d462e5fb",
+          "bytes": 35052
+        }
+      ]
+    }
+  ],
+  "coreManifest": "bookworm-manifest.json",
+  "warning": "Separate optional scratch add-on. No maintainer scripts. Original signed packages retained."
+}

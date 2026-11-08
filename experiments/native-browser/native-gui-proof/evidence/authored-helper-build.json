@@ -1,0 +1,24 @@
+[
+  {
+    "source": "combined_x_control.c",
+    "sourceSha256": "e5193f96e4538a1bd16a55c060696ec4830c878e3d9a19a8680e7fa14d49fdbb",
+    "outputSha256": "6493279979f2ec6ec95f793c1de1dab260ee883cea9d2d7a3f4e3281b642da10",
+    "requiredGlibc": [
+      "2.2.5",
+      "2.17",
+      "2.34"
+    ],
+    "privateLoaderClosure": true
+  },
+  {
+    "source": "native_x_probe.c",
+    "sourceSha256": "d4f0183eca07954759f835c7af9690ba9d4b193c0c232329f37d061bcf21ba01",
+    "outputSha256": "e3dd65705eb93e7321f053346460a724499e8d2661f1b8747ed16361ef4774a5",
+    "requiredGlibc": [
+      "2.2.5",
+      "2.17",
+      "2.34"
+    ],
+    "privateLoaderClosure": true
+  }
+]

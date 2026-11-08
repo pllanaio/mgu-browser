@@ -1,0 +1,284 @@
+{
+  "initialFacts": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "screenX": 0,
+    "screenY": 24,
+    "outerWidth": 1280,
+    "outerHeight": 376,
+    "innerWidth": 1279,
+    "innerHeight": 312,
+    "fullscreen": null,
+    "video": {
+      "time": 0,
+      "paused": true,
+      "decoded": 0,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 8,
+        "y": 8,
+        "w": 247,
+        "h": 37
+      },
+      "full": {
+        "x": 264,
+        "y": 8,
+        "w": 200,
+        "h": 37
+      },
+      "dialog": {
+        "x": 473,
+        "y": 8,
+        "w": 136,
+        "h": 37
+      }
+    }
+  },
+  "inlineBefore": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "screenX": 0,
+    "screenY": 24,
+    "outerWidth": 1280,
+    "outerHeight": 376,
+    "innerWidth": 1280,
+    "innerHeight": 233,
+    "fullscreen": null,
+    "video": {
+      "time": 0.388809,
+      "paused": false,
+      "decoded": 17,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 8,
+        "y": 8,
+        "w": 247,
+        "h": 37
+      },
+      "full": {
+        "x": 264,
+        "y": 8,
+        "w": 200,
+        "h": 37
+      },
+      "dialog": {
+        "x": 473,
+        "y": 8,
+        "w": 136,
+        "h": 37
+      }
+    }
+  },
+  "inlineAfter": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "screenX": 0,
+    "screenY": 24,
+    "outerWidth": 1280,
+    "outerHeight": 376,
+    "innerWidth": 1280,
+    "innerHeight": 233,
+    "fullscreen": null,
+    "video": {
+      "time": 6.3911,
+      "paused": false,
+      "decoded": 197,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 8,
+        "y": 8,
+        "w": 247,
+        "h": 37
+      },
+      "full": {
+        "x": 264,
+        "y": 8,
+        "w": 200,
+        "h": 37
+      },
+      "dialog": {
+        "x": 473,
+        "y": 8,
+        "w": 136,
+        "h": 37
+      }
+    }
+  },
+  "inlineCapture": {
+    "success": true,
+    "uid": 1000,
+    "width": 1280,
+    "height": 400,
+    "seconds": 6.000089,
+    "fps": 30.0,
+    "frames": 180,
+    "changedFrames": 180,
+    "captureCrcMeanMs": 2.627,
+    "captureCrcMaxMs": 4.217,
+    "captureCpuPercent": 7.326,
+    "xErrors": 0
+  },
+  "audioMeasuredByteStart": 260352,
+  "audioMeasuredByteEnd": 1425792,
+  "nativeFullscreenNoticeDismissAttempt": true,
+  "fullscreenBefore": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1280,
+    "outerHeight": 400,
+    "innerWidth": 1280,
+    "innerHeight": 400,
+    "fullscreen": "v",
+    "video": {
+      "time": 8.386767,
+      "paused": false,
+      "decoded": 256,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 8,
+        "y": 8,
+        "w": 247,
+        "h": 37
+      },
+      "full": {
+        "x": 264,
+        "y": 8,
+        "w": 200,
+        "h": 37
+      },
+      "dialog": {
+        "x": 473,
+        "y": 8,
+        "w": 136,
+        "h": 37
+      }
+    }
+  },
+  "fullscreenAfter": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+    },
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1280,
+    "outerHeight": 400,
+    "innerWidth": 1280,
+    "innerHeight": 400,
+    "fullscreen": "v",
+    "video": {
+      "time": 12.590569,
+      "paused": false,
+      "decoded": 382,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 8,
+        "y": 8,
+        "w": 247,
+        "h": 37
+      },
+      "full": {
+        "x": 264,
+        "y": 8,
+        "w": 200,
+        "h": 37
+      },
+      "dialog": {
+        "x": 473,
+        "y": 8,
+        "w": 136,
+        "h": 37
+      }
+    }
+  },
+  "fullscreenCapture": {
+    "success": true,
+    "uid": 1000,
+    "width": 1280,
+    "height": 400,
+    "seconds": 4.000089,
+    "fps": 29.999,
+    "frames": 120,
+    "changedFrames": 120,
+    "captureCrcMeanMs": 2.639,
+    "captureCrcMaxMs": 3.702,
+    "captureCpuPercent": 7.281,
+    "xErrors": 0
+  },
+  "nativeConfirmAccepted": true,
+  "audio": {
+    "nonzeroSamples": 582664,
+    "peakHz": 440.03294892915983,
+    "measuredPcmBytes": 1165440,
+    "sampleRate": 48000,
+    "channels": 2,
+    "sampleBits": 16,
+    "helperLog": "READY\nOPEN\n",
+    "physicalSpeakersTested": false
+  },
+  "baseLibc": "glibc 2.27",
+  "nativeLibraryLeaks": {},
+  "rendererSandboxStatuses": [
+    {
+      "pid": "135",
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    },
+    {
+      "pid": "776",
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    },
+    {
+      "pid": "800",
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    },
+    {
+      "pid": "147",
+      "NoNewPrivs": "1",
+      "Seccomp": "2"
+    }
+  ],
+  "badFlags": [],
+  "sandboxMode": "0:0:4755",
+  "sandboxHash": "0f6a6d6f1433b2082944cb76278282992e4d121aa780f4f12472fa15774ac10d",
+  "cleanup": {
+    "socketRemoved": true,
+    "lockRemoved": true,
+    "authorityRemoved": true
+  },
+  "success": true,
+  "nativeProcessCount": 19,
+  "allNativeUid1000": true
+}

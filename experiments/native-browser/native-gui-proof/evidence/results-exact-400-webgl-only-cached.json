@@ -1,0 +1,334 @@
+{
+  "environment": {
+    "kernel": "6.18.57",
+    "machine": "x86_64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "display": ":119",
+    "xAuthMode": "0o600",
+    "tcpDisabled": true,
+    "nativeNoHeadlessNoCdp": true
+  },
+  "facts": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "platform": "Linux x86_64",
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1279,
+    "outerHeight": 399,
+    "innerWidth": 1269,
+    "innerHeight": 302,
+    "dpr": 1,
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)"
+    },
+    "active": "",
+    "typed": "",
+    "fullscreen": null,
+    "video": {
+      "time": 0,
+      "paused": true,
+      "decoded": 0,
+      "dropped": 0
+    },
+    "buttons": {
+      "play": {
+        "x": 11,
+        "y": 11,
+        "w": 219,
+        "h": 34
+      },
+      "full": {
+        "x": 244,
+        "y": 11,
+        "w": 136,
+        "h": 34
+      },
+      "dialog": {
+        "x": 394,
+        "y": 11,
+        "w": 126,
+        "h": 34
+      },
+      "permission": {
+        "x": 534,
+        "y": 11,
+        "w": 195,
+        "h": 34
+      },
+      "link": {
+        "x": 740,
+        "y": 18.5,
+        "w": 199,
+        "h": 19
+      },
+      "first": {
+        "x": 11,
+        "y": 87,
+        "w": 210,
+        "h": 34
+      },
+      "second": {
+        "x": 235,
+        "y": 87,
+        "w": 210,
+        "h": 34
+      },
+      "file": {
+        "x": 459,
+        "y": 86,
+        "w": 352,
+        "h": 36
+      }
+    }
+  },
+  "benchmarks": [
+    {
+      "width": 1280,
+      "height": 400,
+      "seconds": 6.000088562999736,
+      "fps": 29.999557191537395,
+      "captureFrames": 180,
+      "changedFrames": 180,
+      "captureConvertCrcMsMedian": 2.079259999845817,
+      "captureConvertCrcMsP95": 3.5151879992554314,
+      "captureProcessCpuPercent": 6.015175029675906,
+      "nativeProcessesCpuPercent": 11.33316605013635,
+      "nativeRssMiB": 1785.26953125,
+      "nativePssMiB": 631.26171875,
+      "pssReadableProcesses": 6,
+      "processes": 22,
+      "video": {
+        "time": 6.409487,
+        "paused": false,
+        "decoded": 197,
+        "dropped": 0
+      },
+      "videoDecodedDelta": 180,
+      "videoDroppedDelta": 0,
+      "containerPssMiB": 502.501953125
+    },
+    {
+      "width": 1280,
+      "height": 400,
+      "seconds": 6.0000903269992705,
+      "fps": 29.999548371802685,
+      "captureFrames": 180,
+      "changedFrames": 177,
+      "captureConvertCrcMsMedian": 2.1440055002130975,
+      "captureConvertCrcMsP95": 3.868440000587725,
+      "captureProcessCpuPercent": 6.492218712894177,
+      "nativeProcessesCpuPercent": 12.333147663963326,
+      "nativeRssMiB": 1827.125,
+      "nativePssMiB": 659.412109375,
+      "pssReadableProcesses": 6,
+      "processes": 22,
+      "video": {
+        "time": 2.323139,
+        "paused": false,
+        "decoded": 554,
+        "dropped": 3
+      },
+      "videoDecodedDelta": 170,
+      "videoDroppedDelta": 0,
+      "containerPssMiB": 522.962890625
+    },
+    {
+      "width": 1280,
+      "height": 400,
+      "seconds": 6.000095929000054,
+      "fps": 29.999520362668253,
+      "captureFrames": 180,
+      "changedFrames": 178,
+      "captureConvertCrcMsMedian": 2.152623500023765,
+      "captureConvertCrcMsP95": 2.581767999799922,
+      "captureProcessCpuPercent": 5.914192792899877,
+      "nativeProcessesCpuPercent": 16.49973619946754,
+      "nativeRssMiB": 1822.953125,
+      "nativePssMiB": 650.341796875,
+      "pssReadableProcesses": 6,
+      "processes": 22,
+      "video": {
+        "time": 1.243854,
+        "paused": false,
+        "decoded": 1001,
+        "dropped": 3
+      },
+      "videoDecodedDelta": 177,
+      "videoDroppedDelta": 0,
+      "containerPssMiB": 510.693359375
+    }
+  ],
+  "nativeTabShiftTab400": true,
+  "nativeFileKeyboardSelected400": true,
+  "nativeFileSelected400": true,
+  "nativeFileCancel400": true,
+  "nativeOsNoticeDismissed": true,
+  "videoElementFullscreen400": true,
+  "fullscreenFacts": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "platform": "Linux x86_64",
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1280,
+    "outerHeight": 400,
+    "innerWidth": 1280,
+    "innerHeight": 400,
+    "dpr": 1,
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)"
+    },
+    "active": "",
+    "typed": "native input 123",
+    "fullscreen": "v",
+    "video": {
+      "time": 1.243854,
+      "paused": false,
+      "decoded": 1001,
+      "dropped": 3
+    },
+    "buttons": {
+      "play": {
+        "x": 11,
+        "y": 11,
+        "w": 219,
+        "h": 34
+      },
+      "full": {
+        "x": 244,
+        "y": 11,
+        "w": 136,
+        "h": 34
+      },
+      "dialog": {
+        "x": 394,
+        "y": 11,
+        "w": 126,
+        "h": 34
+      },
+      "permission": {
+        "x": 534,
+        "y": 11,
+        "w": 195,
+        "h": 34
+      },
+      "link": {
+        "x": 740,
+        "y": 18.5,
+        "w": 199,
+        "h": 19
+      },
+      "first": {
+        "x": 11,
+        "y": 87,
+        "w": 210,
+        "h": 34
+      },
+      "second": {
+        "x": 235,
+        "y": 87,
+        "w": 210,
+        "h": 34
+      },
+      "file": {
+        "x": 459,
+        "y": 86,
+        "w": 352,
+        "h": 36
+      }
+    }
+  },
+  "audio": {
+    "existingOldGlibcHelper": true,
+    "bytes": 6657792,
+    "nonzeroSamples": 3250832,
+    "peakHz": 440.0,
+    "log": "READY\nOPEN\n"
+  },
+  "xErrors": 0,
+  "finalFacts": {
+    "webdriver": false,
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "platform": "Linux x86_64",
+    "screenX": 0,
+    "screenY": 0,
+    "outerWidth": 1280,
+    "outerHeight": 400,
+    "innerWidth": 1280,
+    "innerHeight": 313,
+    "dpr": 1,
+    "graphics": {
+      "available": true,
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "vendor": "Google Inc. (Google)"
+    },
+    "active": "",
+    "typed": "native input 123",
+    "fullscreen": null,
+    "video": {
+      "time": 1.680638,
+      "paused": false,
+      "decoded": 1015,
+      "dropped": 3
+    },
+    "buttons": {
+      "play": {
+        "x": 11,
+        "y": 11,
+        "w": 219,
+        "h": 34
+      },
+      "full": {
+        "x": 244,
+        "y": 11,
+        "w": 136,
+        "h": 34
+      },
+      "dialog": {
+        "x": 394,
+        "y": 11,
+        "w": 126,
+        "h": 34
+      },
+      "permission": {
+        "x": 534,
+        "y": 11,
+        "w": 195,
+        "h": 34
+      },
+      "link": {
+        "x": 740,
+        "y": 18.5,
+        "w": 199,
+        "h": 19
+      },
+      "first": {
+        "x": 11,
+        "y": 87,
+        "w": 210,
+        "h": 34
+      },
+      "second": {
+        "x": 235,
+        "y": 87,
+        "w": 210,
+        "h": 34
+      },
+      "file": {
+        "x": 459,
+        "y": 86,
+        "w": 352,
+        "h": 36
+      }
+    }
+  },
+  "uiProofs": {
+    "confirmAccepted": true,
+    "nativeSecondTabRequested": true
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "success": true,
+  "engine": "156.0.8078.79",
+  "node": "v8.16.2",
+  "webdriver": false,
+  "noHeadlessOrCDP": true,
+  "extensionId": "cioniecfpnfdjfkfhcijhdpjabcpbplj",
+  "nativeMessaging": true,
+  "wrongExtensionOriginRejected": true,
+  "peerUIDChecks": 449,
+  "immutableHost": [
+    "0:0:444",
+    "0:0:555"
+  ],
+  "tabs": {
+    "metadata": true,
+    "createNavigateClose": true,
+    "nativeAudible": true,
+    "nativeMutedEvents": true,
+    "closedShadowAudible": true,
+    "crossOriginFrameAudible": true,
+    "crossOriginClosedShadowAudible": true,
+    "recentAudioRetentionQualified": true
+  },
+  "focus": {
+    "email": true,
+    "closedPasswordNoValues": true,
+    "closedRootSwitch": true,
+    "crossOriginFrame": true,
+    "frameId": 4,
+    "closedRootAPI": true
+  },
+  "cookies": {
+    "httpOnly": true,
+    "session": true,
+    "persistentExpiry": true,
+    "hostOnly": true,
+    "partitionEnumeration": true,
+    "partitionKey": {
+      "hasCrossSiteAncestor": true,
+      "topLevelSite": "http://127.0.0.1"
+    },
+    "changeOverwriteThenExplicit": true,
+    "valuesLogged": false
+  },
+  "downloads": {
+    "nativeFilename": "native-mgu-fixture.txt",
+    "exactBytes": true,
+    "progressSearchBytes": 393216,
+    "cancel": "USER_CANCELED"
+  },
+  "eventCount": 102,
+  "privateNetwork": "none",
+  "rendererSandbox": [
+    {
+      "pid": "149",
+      "noNewPrivs": 1,
+      "seccomp": 2
+    },
+    {
+      "pid": "1158",
+      "noNewPrivs": 1,
+      "seccomp": 2
+    },
+    {
+      "pid": "164",
+      "noNewPrivs": 1,
+      "seccomp": 2
+    },
+    {
+      "pid": "163",
+      "noNewPrivs": 1,
+      "seccomp": 2
+    },
+    {
+      "pid": "210",
+      "noNewPrivs": 1,
+      "seccomp": 2
+    }
+  ],
+  "allNativeUIDs1000": true,
+  "actualForbiddenFlags": [],
+  "cleanup": {
+    "socketRemoved": true,
+    "lockRemoved": true,
+    "authorityRemoved": true
+  },
+  "engineSHA256": "9c94b57491fcc1a4b5a013ecb8fa13a637cc9a16aebea5041899c3cb033e5a13",
+  "oopifNativeTaskManagerEvidence": {
+    "screenshot": "native-task-manager.png",
+    "parentTabPID": 164,
+    "subframePID": 163,
+    "subframeSite": "http://localhost/",
+    "bothCapturedAsSandboxedRenderers": true,
+    "verification": "Native Chromium Task Manager screenshot reviewed; no CDP"
+  }
+}
