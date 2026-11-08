@@ -4,6 +4,7 @@ const CdpPipe=require('./cdp_pipe'),PNG=require('./png_frame'),URLPolicy=require
 const Metadata=require('./browser_metadata');
 const Identity=require('./browser_identity');
 const Audio=require('./browser_audio'),DRM=require('./browser_drm');
+const {CdmProvisioner}=require('./browser_cdm_provision');
 const VehicleAudioBridge=require('./browser_audio_bridge');
 let JPEG=null;try{JPEG=require('./jpeg_frame.node');}catch(e){}
 const monotonic=()=>{const t=process.hrtime();return t[0]*1000+t[1]/1e6;};
@@ -13,6 +14,10 @@ class BrowserSession extends EventEmitter {
         super();this.options=options;this.gate=options.gate;this.child=null;this.pipe=null;
         this.audio=Audio.output(Object.assign({},process.env,options.env||{}));this.webAudioContexts=new Map();this.drm=DRM.status();
         this.vehicleAudio=options.vehicleAudio?new VehicleAudioBridge(options.vehicleAudio):null;
+        // Optional: Widevine fetched by Chromium's own component updater into a
+        // persistent backend-owned cache (browser_cdm_provision.js).
+        this.cdmProvisioner=options.cdmCache&&options.binary?new CdmProvisioner({binary:options.binary,root:options.cdmCache,env:options.env}):null;
+        if(this.cdmProvisioner)this.cdmProvisioner.on('diagnostic',text=>this.emit('diagnostic','[cdm] '+text));
         this.session=null;this.epoch=0;this.lastFrame=0;this.lastDecodeStart=0;this.decoding=false;this.profile=null;
         // 30 fps ceiling. The frontend only receives changed rows, so this costs
         // little on static pages and keeps scrolling and video fluid.
@@ -56,8 +61,15 @@ class BrowserSession extends EventEmitter {
             // intermediate frames per gesture that the screencast cannot keep up with.
             '--disable-smooth-scrolling',
             '--disable-features=Translate,MediaRouter,OptimizationHints,AutofillServerCommunication,InterestFeedContentSuggestions',
-            '--window-size='+this.viewport.width+','+this.viewport.height,'--user-data-dir='+this.profile,'about:blank'];
-        if(this.options.mediaDisabled)args.push('--disable-blink-features=WebCodecs');
+            '--window-size='+this.viewport.width+','+this.viewport.height,
+            // Headless defaults report an 800x600 screen behind a larger window.
+            // Report the real browser surface so screen and window agree.
+            '--screen-info={0,0 '+this.viewport.width+'x'+this.viewport.height+'}',
+            // --remote-debugging-pipe and --headless set navigator.webdriver.
+            // Streaming and login services treat it as a bot signal. Chromium
+            // only honours the last --disable-blink-features switch.
+            '--disable-blink-features='+(this.options.mediaDisabled?'AutomationControlled,WebCodecs':'AutomationControlled'),
+            '--user-data-dir='+this.profile,'about:blank'];
         if(this.options.mediaDisabled||this.vehicleAudio&&!vehicleOutput)args.push('--mute-audio');
         this.audio.reset();args.push.apply(args,vehicleOutput?vehicleOutput.args:this.audio.args);
         if(this.options.profileStore&&this.options.profileStore.prefs.rememberSessions)args.push('--restore-last-session');
@@ -81,6 +93,14 @@ class BrowserSession extends EventEmitter {
             await this._newTab(url||'');
             this.emit('started');this.scheduleCookieCheckpoint();
         } catch(e) {this.stop('Browserstart fehlgeschlagen');throw e;}
+    }
+    cdmStatus(){return this.cdmProvisioner?this.cdmProvisioner.status():{phase:'unavailable',error:null,installed:null,running:false};}
+    // Starts the download in the background; progress is part of cdmStatus()
+    // and mediaCapabilities(). The module is used from the next engine start.
+    cdmProvision(){
+        if(!this.cdmProvisioner)throw new Error('Widevine-Bereitstellung in dieser Laufzeit nicht verfügbar');
+        this.cdmProvisioner.start().then(r=>this.emit('cdm',{phase:'ready',version:r.version}),e=>this.emit('cdm',{phase:'failed',error:e.message}));
+        return this.cdmStatus();
     }
     send(method,params,timeoutMs) {
         if(!this.pipe||!this.session)return Promise.reject(new Error('Browser nicht verbunden'));

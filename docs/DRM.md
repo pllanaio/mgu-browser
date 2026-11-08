@@ -12,6 +12,30 @@ extracts, redistributes, patches or decrypts a CDM. Only use a module whose
 license permits the intended installation and use. Device integration and
 provisioning remain subject to Google's and the content provider's requirements.
 
+## Widevine through Chromium's component updater (new)
+
+**Settings → Media & streaming → "Get Widevine"** starts the installed engine
+once, invisibly (`--ozone-platform=headless`, sandbox on, own persistent
+user-data directory `/var/opt/mgu-browser/data/cdm-component`,
+`--component-updater=fast-update`). Chromium's own component updater then
+fetches the Widevine module from Google's component update service, exactly as
+desktop Chromium on Linux does. The engine is stopped as soon as a complete
+version passes the same checks as below (owner, no symlinks, manifest, x86_64
+ELF), or after five minutes. Node never downloads, unpacks or executes the
+module. The newest valid cached version is used from the next browser start.
+
+Precedence: administrator `cdm.json` → development `MGU_BROWSER_CDM_DIRECTORY` →
+component cache. This requires an engine built with Widevine support
+(`enable_widevine`); the capability check reports the result.
+
+Measured here with Chrome for Testing 153 and Google's CDM 4.10.3112.0:
+registration via the hint file in `--headless` with the sandbox on succeeds;
+robustness `SW_SECURE_CRYPTO`/`SW_SECURE_DECODE` (L3), `cbcs` supported, HDCP
+`output-restricted` (same under X11, i.e. normal for Linux). The component
+updater registered Widevine and contacted Google's update hosts; the download
+itself was blocked by this environment's network policy. See
+[STREAMING_EVALUATION.md](STREAMING_EVALUATION.md).
+
 ## Headunit configuration
 
 An administrator supplies the CDM outside the browser's temporary `work`

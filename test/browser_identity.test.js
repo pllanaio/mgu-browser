@@ -5,8 +5,9 @@ const ua='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
 test('Visible Browser preserves actual Linux and Chromium versions in legacy UA and Client Hints',()=>{
     const identity=Identity.create({userAgent:ua,product:'Chrome/156.0.8078.79'},'x64');
     assert.equal(identity.userAgent,ua.replace('HeadlessChrome/','Chrome/'));
-    assert.deepEqual(identity.metadata.brands,[{brand:'Chromium',version:'156'}]);
-    assert.deepEqual(identity.metadata.fullVersionList,[{brand:'Chromium',version:'156.0.8078.79'}]);
+    // 156 is even: GREASE first, as in real Chromium 156.
+    assert.deepEqual(identity.metadata.brands,[{brand:'Not:A-Brand',version:'8'},{brand:'Chromium',version:'156'}]);
+    assert.deepEqual(identity.metadata.fullVersionList,[{brand:'Not:A-Brand',version:'8.0.0.0'},{brand:'Chromium',version:'156.0.8078.79'}]);
     assert.equal(identity.metadata.platform,'Linux');assert.equal(identity.metadata.bitness,'64');
     assert.equal(identity.metadata.architecture,'x86');assert.equal(identity.metadata.mobile,false);
     assert(!JSON.stringify(identity).includes('Windows'));
@@ -23,4 +24,10 @@ test('Every tab and locale update receives matching UA metadata without changing
     assert.equal(calls[0].params.acceptLanguage,'de-DE,de;q=0.9');
     assert.equal(calls[0].params.userAgentMetadata,identity.metadata);assert.equal(calls[0].session,'tab-session');
     assert.equal(calls[0].params.platform,'Linux x86_64');
+});
+test('GREASE brand matches what a real Chromium 153 reports natively',()=>{
+    const identity=Identity.create({userAgent:ua.replace(/156/g,'153'),product:'Chrome/153.0.8010.12'},'x64');
+    // Measured from Chrome for Testing 153.0.8010.12 navigator.userAgentData.
+    assert.deepEqual(identity.metadata.brands.map(b=>b.brand),['Chromium','Not_A Brand']);
+    assert.deepEqual(identity.metadata.fullVersionList,[{brand:'Chromium',version:'153.0.8010.12'},{brand:'Not_A Brand',version:'8.0.0.0'}]);
 });

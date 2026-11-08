@@ -33,13 +33,30 @@ function configuration(file,uid){
     if(!value||typeof value.directory!=='string'||Object.keys(value).some(k=>k!=='directory'))throw Error('CDM configuration rejected');
     return validate(value.directory,uid);
 }
+// Chromium's own component updater stores a downloaded CDM as
+// <root>/WidevineCdm/<version>/{manifest.json,_platform_specific/linux_x64/...}.
+// The cache belongs to the backend user. Pick the newest version that passes
+// the same checks as an administrator-provided module.
+function versionKey(v){return v.split('.').map(n=>('000000'+n).slice(-6)).join('.');}
+function cache(root,uid){
+    if(typeof root!=='string'||!path.isAbsolute(root))return null;
+    const base=path.join(root,'WidevineCdm');let names;
+    try{directories(base,uid);names=fs.readdirSync(base);}catch(e){return null;}
+    names=names.filter(n=>/^\d{1,6}\.\d{1,6}\.\d{1,6}\.\d{1,6}$/.test(n)).sort((a,b)=>versionKey(b)<versionKey(a)?-1:1);
+    for(const name of names){try{const selected=validate(path.join(base,name),uid);if(selected.version===name)return selected;}catch(e){}}
+    return null;
+}
 function prepare(profile,options){
-    options=options||{};let selected=null,reason='no-cdm';
+    options=options||{};let selected=null,reason='no-cdm',source=null;
     try{
-        if(options.cdmConfig)selected=configuration(options.cdmConfig);
-        else if(options.cdmDirectory)selected=validate(options.cdmDirectory,process.getuid());
+        if(options.cdmConfig){selected=configuration(options.cdmConfig);source='administrator';}
+        else if(options.cdmDirectory){selected=validate(options.cdmDirectory,process.getuid());source='development';}
         if(selected)reason='configured';
-    }catch(e){reason='configuration-rejected';}
+    }catch(e){reason='configuration-rejected';selected=null;}
+    // Fallback: a module Chromium itself downloaded from Google's component
+    // update service (see browser_cdm_provision.js). An explicit administrator
+    // module always takes precedence.
+    if(!selected&&options.cdmCache){selected=cache(options.cdmCache,process.getuid());if(selected){reason='configured';source='component';}}
     // A restored profile must not select a different native library. Even with
     // no configured CDM, overwrite Chromium's hint with the empty selection.
     const directory=path.join(profile,'WidevineCdm');
@@ -48,11 +65,18 @@ function prepare(profile,options){
     fs.chmodSync(directory,0o700);
     const file=path.join(directory,HINT);try{fs.unlinkSync(file);}catch(e){if(e.code!=='ENOENT')throw e;}
     fs.writeFileSync(file,JSON.stringify({Path:selected?selected.directory:''})+'\n',{mode:0o600,flag:'wx'});
-    return {configured:!!selected,configuration:reason,version:selected?selected.version:null,recognized:false,protectedPlaybackVerified:false};
+    return {configured:!!selected,configuration:reason,source:selected?source:null,version:selected?selected.version:null,recognized:false,protectedPlaybackVerified:false};
 }
 function status(prepared,probe){
     const result=Object.assign({configured:false,configuration:'no-cdm',version:null,recognized:false,protectedPlaybackVerified:false},prepared||{});
-    if(probe){result.recognized=probe.state==='recognized';result.state=probe.state;result.error=probe.error||null;}
+    if(probe){result.recognized=probe.state==='recognized';result.state=probe.state;result.error=probe.error||null;
+        if(probe.robustness&&typeof probe.robustness==='object')result.robustness={swSecureCrypto:probe.robustness.swSecureCrypto===true,swSecureDecode:probe.robustness.swSecureDecode===true,hwSecureAll:probe.robustness.hwSecureAll===true};
+        if(typeof probe.cbcs==='boolean')result.cbcs=probe.cbcs;
+        if(['usable','output-restricted','output-downscaled','internal-error','unknown'].includes(probe.hdcp))result.hdcp=probe.hdcp;
+        // L3 (software) is what desktop Linux Chrome has: providers cap it,
+        // typically at 720p, but it is the level Netflix/Disney+/Prime accept on Linux.
+        if(result.robustness)result.securityLevel=result.robustness.hwSecureAll?'L1':result.robustness.swSecureCrypto?'L3':null;
+    }
     else result.state='not-tested';
     return result;
 }
@@ -69,11 +93,21 @@ const probeScript=`(async()=>{
                 {initDataTypes:["cenc"],videoCapabilities:[{contentType:'video/mp4; codecs="avc1.42E01E"'}]},
                 {initDataTypes:["cenc"],videoCapabilities:[{contentType:'video/webm; codecs="vp9"'}]}
             ]);
-            await access.createMediaKeys();
+            const keys=await access.createMediaKeys();
+            result.widevine=true;result.drm.state="recognized";
+            // What streaming players ask for. Software CDMs (L3) offer the SW_*
+            // levels only; HW_SECURE_ALL (L1) needs a certified hardware path.
+            const level=async(robustness,scheme)=>{const capability={contentType:'video/mp4; codecs="avc1.42E01E"',robustness};if(scheme)capability.encryptionScheme=scheme;
+                try{await navigator.requestMediaKeySystemAccess("com.widevine.alpha",[{initDataTypes:["cenc"],videoCapabilities:[capability]}]);return true;}catch(e){return false;}};
+            result.drm.robustness={swSecureCrypto:await level("SW_SECURE_CRYPTO"),swSecureDecode:await level("SW_SECURE_DECODE"),hwSecureAll:await level("HW_SECURE_ALL")};
+            result.drm.cbcs=await level("SW_SECURE_CRYPTO","cbcs");
+            if(keys&&typeof keys.getStatusForPolicy==="function"){
+                try{const hdcp=await keys.getStatusForPolicy({minHdcpVersion:"1.0"});result.drm.hdcp=["usable","output-restricted","output-downscaled","internal-error"].includes(hdcp)?hdcp:"unknown";}
+                catch(e){result.drm.hdcp="unknown";}
+            }
         })(),new Promise((_,reject)=>{timer=setTimeout(()=>{const e=new Error();e.name="TimeoutError";reject(e);},4000);})]);
-        result.widevine=true;result.drm.state="recognized";
-    }catch(e){result.drm.error=["NotSupportedError","SecurityError","InvalidStateError","QuotaExceededError","TimeoutError","OperationError"].includes(e.name)?e.name:"UnknownError";result.drm.state=e.name==="TimeoutError"?"timed-out":"unavailable";}
+    }catch(e){if(!result.widevine){result.drm.error=["NotSupportedError","SecurityError","InvalidStateError","QuotaExceededError","TimeoutError","OperationError"].includes(e.name)?e.name:"UnknownError";result.drm.state=e.name==="TimeoutError"?"timed-out":"unavailable";}}
     finally{clearTimeout(timer);}
     return JSON.stringify(result);
 })()`;
-module.exports={validate,configuration,prepare,status,probeScript,HINT};
+module.exports={validate,configuration,cache,prepare,status,probeScript,HINT};

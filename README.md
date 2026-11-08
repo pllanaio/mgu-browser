@@ -14,7 +14,7 @@ ist nicht bestätigt.**
 Die Veröffentlichung ist ein Entwicklungsstand, keine Freigabe für alle
 MGU-Firmwarestände. Geprüfte Bereiche und offene Punkte stehen unter [Tests](docs/TESTING.md).
 
-[Headunit-Vorbereitung](docs/HEADUNIT_READINESS.md) · [Installationsplan](docs/INSTALLATION_PLAN.md) ·
+[Streaming-/DRM-Evaluation](docs/STREAMING_EVALUATION.md) · [Headunit-Vorbereitung](docs/HEADUNIT_READINESS.md) · [Installationsplan](docs/INSTALLATION_PLAN.md) ·
 [English overview](README.en.md) · [Roadmap](docs/ROADMAP.md) ·
 [Entwicklung](docs/DEVELOPMENT.md) · [Architektur](docs/ARCHITECTURE.md) ·
 [Credits](CREDITS.md) · [Drittanbieter](THIRD_PARTY_NOTICES.md)

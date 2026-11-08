@@ -193,7 +193,7 @@ module.exports={
         const context=this.mediaContext();this.requireAllowed();if(!this.session)throw new Error('Zuerst eine HTTPS-Webseite öffnen');
         const r=await context.send('Runtime.evaluate',{expression:DRM.probeScript,awaitPromise:true,returnByValue:true});
         if(r.exceptionDetails||!r.result||typeof r.result.value!=='string')throw Error('Medienprüfung fehlgeschlagen');
-        const result=JSON.parse(r.result.value);result.drm=DRM.status(this.drm,result.drm);
+        const result=JSON.parse(r.result.value);result.drm=DRM.status(this.drm,result.drm);if(typeof this.cdmStatus==='function')result.drm.provision=this.cdmStatus();
         return Object.assign(result,{mediaEnabled:!this.options.mediaDisabled,audio:typeof this.audioStatus==='function'?this.audioStatus():{configured:false}});
     },
     async inspectMedia(){

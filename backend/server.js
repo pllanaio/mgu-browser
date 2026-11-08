@@ -20,13 +20,13 @@ const gate={onBlock:null,check(){return {allowed:allowed&&now()-updated>=0&&now(
 const frameSender=require('./frame_delta').sender({owner:()=>owner,allowed:()=>gate.check().allowed,generation:()=>generation});
 const audioGid=Number(process.env.MGU_BROWSER_AUDIO_GID);
 const vehicleAudio=Number.isInteger(audioGid)&&audioGid>0&&audioGid<=65535?{binary:'/var/opt/mgu-browser/current/audio-bridge',gid:audioGid}:null;
-const browser=new Browser({gate,frameReady:()=>frameSender.canSend(),mediaDisabled:false,cdmConfig:'/var/opt/mgu-browser/cdm.json',binary:'/var/opt/mgu-browser/current/browser-launch',profileRoot:'/var/opt/mgu-browser/work/profiles',profileStore,viewport:{width:1280,height:384},vehicleAudio,env:{FONTCONFIG_FILE:ENGINE+'/fonts.conf',CHROME_DEVEL_SANDBOX:ENGINE+'/chrome-sandbox'}});
+const browser=new Browser({gate,frameReady:()=>frameSender.canSend(),mediaDisabled:false,cdmConfig:'/var/opt/mgu-browser/cdm.json',cdmCache:'/var/opt/mgu-browser/data/cdm-component',binary:'/var/opt/mgu-browser/current/browser-launch',profileRoot:'/var/opt/mgu-browser/work/profiles',profileStore,viewport:{width:1280,height:384},vehicleAudio,env:{FONTCONFIG_FILE:ENGINE+'/fonts.conf',CHROME_DEVEL_SANDBOX:ENGINE+'/chrome-sandbox'}});
 function stop(reason){allowed=false;browser.stop(reason);phase='idle';status();}
 const {RemoteControl}=require('./remote_control');
 const remote=new RemoteControl({browser});
 remote.on('remote',value=>{if(owner)owner.json({event:'remote',value});});
 browser.on('frame',frame=>frameSender.send(frame));
-['started','blocked','fault','version','navigation','navigationState','loading','input','tabs','tabSelected','media'].forEach(event=>browser.on(event,value=>{if(owner)owner.json({event,value:value&&value.message||value});}));
+['started','blocked','fault','version','navigation','navigationState','loading','input','tabs','tabSelected','media','cdm'].forEach(event=>browser.on(event,value=>{if(owner)owner.json({event,value:value&&value.message||value});}));
 browser.on('performance',value=>fs.writeFileSync('/var/opt/mgu-browser/data/render-performance.json',JSON.stringify(value)));
 browser.on('started',()=>{phase='running';status();[3000,12000,25000].forEach(ms=>setTimeout(()=>{if(browser.child)browser.pageInfo().then(r=>fs.writeFileSync('/var/opt/mgu-browser/data/page-diagnostic.json',r.result.value)).catch(()=>{});},ms));});
 browser.on('fault',e=>{phase='fault';status();console.error(e.message);});
@@ -82,6 +82,8 @@ const server=net.createServer(socket=>{
                 case 'mediaFocus':result=await browser.focusMediaControl(message.delta);break;
                 case 'mediaPress':result=await browser.pressMediaControl();break;
                 case 'mediaCapabilities':result=await browser.mediaCapabilities();break;
+                case 'cdmProvision':result=browser.cdmProvision();break;
+                case 'cdmStatus':result=browser.cdmStatus();break;
                 case 'audioTest':result=await browser.audioTest();break;
                 case 'audioStatus':result=browser.audioStatus();break;
                 case 'audioRoute':result=await browser.audioRoute(message.enabled);break;
@@ -121,4 +123,4 @@ setInterval(()=>{
     if(state.connected&&(state.updated!==lastNetworkStamp||((!lastNetwork||!lastNetwork.https)&&now()-lastNetworkProbe>15000))){lastNetworkStamp=state.updated;lastNetworkProbe=now();networkProbe().then(result=>{lastNetwork=result;fs.writeFileSync('/var/opt/mgu-browser/data/network-status.json',JSON.stringify(result));if(owner)owner.json({event:'network',value:result});});}
 },2000);
 let shuttingDown=false;
-for(const sig of ['SIGTERM','SIGINT'])process.on(sig,async()=>{if(shuttingDown)return;shuttingDown=true;remote.destroy();stop('Backend beendet');if(owner)owner.socket.destroy();server.close();const timeout=setTimeout(()=>process.exit(0),18000);timeout.unref();await browser.closing;process.exit(0);});
+for(const sig of ['SIGTERM','SIGINT'])process.on(sig,async()=>{if(shuttingDown)return;shuttingDown=true;if(browser.cdmProvisioner)browser.cdmProvisioner.stop();remote.destroy();stop('Backend beendet');if(owner)owner.socket.destroy();server.close();const timeout=setTimeout(()=>process.exit(0),18000);timeout.unref();await browser.closing;process.exit(0);});

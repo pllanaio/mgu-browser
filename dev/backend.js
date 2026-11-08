@@ -11,7 +11,7 @@ const profileStore=new SecureBrowserData(path.join(base,'protected'),fs.existsSy
 const now=()=>{const t=process.hrtime();return t[0]*1000+t[1]/1e6;};
 let owner=null,allowed=false,updated=0,generation=0,phase='idle',lastURL=null,frames=0;
 const gate={check:()=>({allowed:allowed&&now()-updated<1500})};
-const browser=new Browser({gate,mediaDisabled:false,cdmDirectory:process.env.MGU_BROWSER_CDM_DIRECTORY,binary:process.env.MGU_CHROMIUM,profileRoot:path.join(base,'profiles'),profileStore,viewport:{width:1280,height:384},env:{HOME:process.env.HOME}});
+const browser=new Browser({gate,mediaDisabled:false,cdmDirectory:process.env.MGU_BROWSER_CDM_DIRECTORY,cdmCache:path.join(base,'cdm-component'),binary:process.env.MGU_CHROMIUM,profileRoot:path.join(base,'profiles'),profileStore,viewport:{width:1280,height:384},env:{HOME:process.env.HOME}});
 function status(){fs.writeFileSync(path.join(base,'service-state.json'),JSON.stringify({laptop:true,uid:process.getuid(),pid:process.pid,connected:!!owner,allowed:gate.check().allowed,phase,url:lastURL,frames,codec:browser.performance.codec}));}
 function stop(reason){allowed=false;browser.stop(reason);phase='idle';status();}
 const {RemoteControl}=require('./remote_control');
@@ -19,7 +19,7 @@ const remote=new RemoteControl({browser,port:Number(process.env.MGU_REMOTE_PORT)
 remote.on('remote',value=>{if(owner)owner.json({event:'remote',value});});
 const frameSender=require('./frame_delta').sender({owner:()=>owner,allowed:()=>gate.check().allowed,generation:()=>generation});
 browser.on('frame',frame=>{if(frameSender.send(frame)){frames++;if(frames===1||frames%20===0)status();}});
-for(const event of ['started','blocked','fault','version','navigation','navigationState','loading','input','tabs','tabSelected','media'])browser.on(event,value=>{
+for(const event of ['started','blocked','fault','version','navigation','navigationState','loading','input','tabs','tabSelected','media','cdm'])browser.on(event,value=>{
     if(event==='started')phase='running';if(event==='blocked')phase='idle';
     if(event==='navigation')lastURL=value;
     if(event==='fault')phase='fault';
@@ -60,6 +60,8 @@ const server=net.createServer(socket=>{
                 case 'pageLeave':result=await browser.leavePage();break;
                 case 'mediaAction':result=await browser.mediaAction(m.action);break;
                 case 'mediaCapabilities':result=await browser.mediaCapabilities();break;
+                case 'cdmProvision':result=browser.cdmProvision();break;
+                case 'cdmStatus':result=browser.cdmStatus();break;
                 case 'audioTest':result=await browser.audioTest();break;
                 case 'audioStatus':result=browser.audioStatus();break;
                 case 'audioRoute':result=await browser.audioRoute(m.enabled);break;

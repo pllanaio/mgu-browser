@@ -2,6 +2,19 @@
 // The visible Browser uses the actual Chromium/Linux identity. Keep Client
 // Hints consistent with the legacy UA override; omitting metadata disables
 // Chromium's native hints entirely. Do not claim another OS or browser brand.
+// Chromium always adds a seeded GREASE brand (components/embedder_support/
+// user_agent_utils.cc). A list with only "Chromium" differs from every real
+// Chromium and is an easy automation signal for streaming and login checks.
+const GREASE_CHARS=[' ','(',':','-','.','/',')',';','=','?','_'],GREASE_VERSIONS=['8','99','24'];
+function grease(major){
+    const seed=Number(major)>>>0;
+    return {brand:'Not'+GREASE_CHARS[seed%GREASE_CHARS.length]+'A'+GREASE_CHARS[(seed+1)%GREASE_CHARS.length]+'Brand',version:GREASE_VERSIONS[seed%GREASE_VERSIONS.length]};
+}
+function brandList(major,chromium){
+    const g=grease(major),full=chromium!==major;
+    const list=[{brand:'Chromium',version:chromium},{brand:g.brand,version:full?g.version+'.0.0.0':g.version}];
+    return (Number(major)>>>0)%2===0?[list[1],list[0]]:list;
+}
 function create(version,architecture){
     const original=version&&version.userAgent;
     if(typeof original!=='string'||!original||original.length>2048||/[\r\n\0]/.test(original))throw new Error('Browser identity unavailable');
@@ -11,10 +24,10 @@ function create(version,architecture){
     if(!match||original.indexOf('Linux')<0||!['x64','ia32'].includes(architecture))return {userAgent,metadata:null};
     const fullVersion=match[1],major=fullVersion.split('.')[0];
     return {userAgent,metadata:{
-        brands:[{brand:'Chromium',version:major}],
-        fullVersionList:[{brand:'Chromium',version:fullVersion}],fullVersion,
+        brands:brandList(major,major),
+        fullVersionList:brandList(major,fullVersion),fullVersion,
         platform:'Linux',platformVersion:'',architecture:'x86',model:'',
         mobile:false,bitness:architecture==='x64'?'64':'32',wow64:false
     }};
 }
-module.exports={create};
+module.exports={create,grease};

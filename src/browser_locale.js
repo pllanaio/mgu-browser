@@ -42,6 +42,7 @@ Object.assign(en,{
  'Testton erzeugt. Hörbare Ausgabe am Gerät prüfen.':'Test tone generated. Check audible output on the device.',
  'Drehen: Wert ändern. Drücken: fertig. Links: Browserleiste.':'Turn: change value. Press: done. Left: browser toolbar.',
  'Wiedergabe / Pause':'Play / pause','Video-Vollbild':'Video fullscreen',
+ 'Widevine laden':'Get Widevine','Widevine aktualisieren':'Update Widevine','Widevine lädt ...':'Getting Widevine ...','Widevine wird über Chromium geladen ...':'Chromium is getting Widevine ...',
  'Sitzungsspeicher zurücksetzen':'Reset saved sessions','Gespeicherte Website-Anmeldungen und Cache zurücksetzen? Passwörter bleiben erhalten.':'Reset saved sign-ins and cache? Saved passwords remain.',
  'Browser-Einstellungen konnten nicht gespeichert werden':'Browser settings could not be saved','Speichereinstellungen beschädigt; Persistenz ist ausgeschaltet':'Storage settings are damaged; persistence is off',
  'Datenschutz & Logins':'Privacy & sign-ins','Angemeldet bleiben':'Keep signed in','HTTP-Cache behalten':'Keep HTTP cache','Verlauf aufzeichnen':'Record history',

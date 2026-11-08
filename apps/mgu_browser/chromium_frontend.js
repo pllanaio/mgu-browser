@@ -19,7 +19,7 @@ mgu.run({async start(ctx){
     let editable=false,password=false,tipLabels={};
     let tabs=[],activeTab='',wifiState={},wifiSSID='',wifiPassword='',wifiBusy=false,wifiInternet=null,wifiPoll=0;
     let media={fullscreen:false},mediaIndex=1,mediaUntil=0;
-    let mediaCaps=null,mediaBusy=false,audioBusy=false;
+    let mediaCaps=null,mediaBusy=false,audioBusy=false,cdmBusy=false;
     let vehicleAudioStatus={reason:'idle'},audioWanted=false,audioSync=null,audioNote='',audioRetry=0,audioKnownUntil=0,audioUnknownTimer=null;
     let wifiNetworks=[],wifiScanning=false,wifiScanError='',wifiOffset=0;
     let remoteState=null,remoteBusy=false,remoteQR='',remotePoll=0;
@@ -313,6 +313,20 @@ mgu.run({async start(ctx){
         try{try{await syncVehicleAudio(true);}catch(e){throw new Error(audioError(e));}await browser.request('audioTest');mediaCaps=await browser.request('mediaCapabilities');if(mediaCaps.audio)mediaCaps.audio.vehicle=vehicleAudioStatus;note('Testton erzeugt. Hörbare Ausgabe am Gerät prüfen.');}
         finally{audioBusy=false;syncAudio();}
     }
+    // Widevine through Chromium's own component updater (backend). Used from
+    // the next browser start; the app only polls the bounded status.
+    async function provisionCdm(){
+        if(cdmBusy)return;cdmBusy=true;
+        try{
+            let status=await browser.request('cdmProvision');note('Widevine wird über Chromium geladen ...');
+            const until=Date.now()+330000;
+            while(status.phase==='downloading'&&Date.now()<until){
+                await new Promise(resolve=>setTimeout(resolve,3000));status=await browser.request('cdmStatus');
+                if(mediaCaps&&mediaCaps.drm)mediaCaps.drm.provision=status;
+            }
+            note(status.phase==='ready'?'Widevine '+status.installed+' geladen. Browser schließen und neu öffnen.':'Widevine konnte nicht geladen werden ('+(status.error||status.phase)+')');
+        }finally{cdmBusy=false;}
+    }
     // Phone remote control: show a QR code with a one-time link.
     async function openRemote(fresh){
         panel='remote';keyboard=null;webMode=false;reading=false;remoteBusy=true;activity();
@@ -564,13 +578,16 @@ mgu.run({async start(ctx){
             c.text(mediaCaps.mediaEnabled?'Videowiedergabe in dieser Laufzeit aktiviert':'Videowiedergabe auf der Headunit noch nicht freigegeben',65,205,22,C.text);
             const drm=mediaCaps.drm||{};
             c.text(drm.configuration==='configuration-rejected'?'DRM-Modul nicht verwendbar; Konfiguration prüfen':mediaCaps.secure===false?'Widevine-Prüfung: zuerst eine HTTPS-Seite öffnen':mediaCaps.widevine?'Widevine erkannt - Anbieterwiedergabe noch einzeln zu prüfen':drm.configuration==='no-cdm'?'Kein Widevine-Modul installiert; geschützte Streams benötigen ein eigenes Modul':'Widevine nicht verfügbar - geschützte Streams sind nicht bestätigt',65,235,20,C.muted);
-            c.text('H.264: '+(mediaCaps.h264?'Ja':'Nein')+'   VP9: '+(mediaCaps.vp9?'Ja':'Nein'),65,265,18,C.muted);
+            const prov=drm.provision||{},level=drm.securityLevel?'   Widevine '+drm.securityLevel+(drm.version?' '+drm.version:''):'';
+            const provText=prov.phase==='downloading'?'   Widevine-Download läuft ...':prov.phase==='failed'?'   Widevine-Download fehlgeschlagen':prov.installed&&!mediaCaps.widevine?'   Widevine '+prov.installed+' bereit: Browser neu öffnen':'';
+            c.text('H.264: '+(mediaCaps.h264?'Ja':'Nein')+'   VP9: '+(mediaCaps.vp9?'Ja':'Nein')+level+provText,65,265,18,C.muted);
             c.text(audioLabel(mediaCaps.audio),65,295,18,C.muted);
         }
         [['YouTube','https://www.youtube.com/'],['Netflix','https://www.netflix.com/login'],['Disney+','https://www.disneyplus.com/'],['Prime Video','https://www.primevideo.com/'],['Paramount+','https://www.paramountplus.com/']].forEach((item,i)=>button(c,64+i*296,320,278,44,item[0],()=>browser.newTab(item[1]),'stream-'+i));
         button(c,64,380,352,44,audioBusy?'Testton läuft ...':'Testton (1 s)',testAudio,'audio-test',{enabled:!audioBusy&&!!mediaCaps&&mediaCaps.mediaEnabled});
         button(c,450,380,352,44,'Wiedergabe / Pause',async()=>{await browser.mediaAction('toggle');panel=null;enterPage();},'media-toggle',{enabled:!!mediaCaps&&mediaCaps.mediaEnabled});
         button(c,836,380,352,44,'Video-Vollbild',()=>browser.mediaAction('fullscreen'),'media-fullscreen',{enabled:!!mediaCaps&&mediaCaps.mediaEnabled});
+        if(mediaCaps&&mediaCaps.drm&&mediaCaps.drm.provision&&mediaCaps.drm.provision.phase!=='unavailable')button(c,1222,380,312,44,cdmBusy?'Widevine lädt ...':mediaCaps.widevine?'Widevine aktualisieren':'Widevine laden',provisionCdm,'cdm-provision',{enabled:!cdmBusy});
         if(process.env.MGU_EMULATOR_MODE==='1')button(c,644,bottom-52,250,42,mediaBusy?'Video wird erzeugt ...':'Vollbild testen',async()=>{mediaBusy=true;try{await browser.request('mediaDemo');}finally{mediaBusy=false;}},'media-demo',{enabled:!mediaBusy});
         if(process.env.MGU_EMULATOR_MODE==='1')button(c,920,bottom-52,250,42,'Widevine-Test öffnen',()=>browser.newTab('https://shaka-player-demo.appspot.com/demo/'),'drm-demo');
         button(c,1288,bottom-52,246,42,'Zurueck',()=>{panel='settings';},'streaming-back');
