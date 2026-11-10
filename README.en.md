@@ -1,3 +1,5 @@
+English | [简体中文](README.zh-CN.md) | [Deutsch](README.de.md)
+
 # MGU Browser — English overview
 
 An experimental native browser UI for BMW MGU / iDrive 7, backed by a separate
@@ -13,7 +15,25 @@ version is pending. Protected streams need a separately authorized CDM. No
 Widevine binary or BMW SDK is distributed, and provider playback is unconfirmed.**
 See [installation, dependencies and rollback](docs/MGU_STORE.md).
 
-The [full German README](README.md) describes features and verified limits.
+The [full German README](README.de.md) describes features and verified limits.
+
+## Simplified Chinese UI
+
+Native controls follow the vehicle language. `zh-CN`, `zh-SG`, `zh-Hans`,
+`zh-Hans-CN` and bare `zh` use Simplified Chinese; explicit Traditional Chinese
+locale tags retain the English fallback. Technical date formats, URLs and
+unknown website text are preserved. The on-screen keyboard keeps its existing
+Latin layout; this translation does not add a Chinese IME.
+
+Native menus use a sharp subset CJK atlas. A separate fallback atlas covers
+GB2312 Chinese title characters, including titles such as 百度热搜; it is not a
+complete Unicode CJK font. Both atlases fit the renderer's texture budget.
+Website text is rendered separately by Chromium. The runtime now bundles the
+complete public Noto Sans SC font with its OFL notice and verified source hash,
+and includes the existing engine font configuration as a fallback. This keeps
+the immutable engine 0.1.0 unchanged; update both frontend and runtime to obtain
+both title and webpage fixes. Physical MGU checks are recorded separately from
+local UI tests; this does not add a Chinese IME.
 
 ## Desktop browser functions in 0.16.0
 
@@ -155,7 +175,7 @@ See [audio](docs/AUDIO.md) and [tests](docs/TESTING.md).
 - Up to eight tabs with separate page state and navigation histories.
 - Configurable home page, frequent pages, bookmarks and history.
 - Native controller and touchscreen navigation, side keyboard, Unicode and symbols.
-- System-language integration, German/English UI and multiple keyboard layouts.
+- System-language integration, German/English/Simplified Chinese UI and multiple keyboard layouts.
 - Reading mode, page zoom and optional auto-hidden browser chrome.
 - Uncropped video fullscreen with controller play/pause, seek, mute and exit.
 - Prepared hotspot settings and Wi-Fi scanner/broker; real-hardware qualification pending.
